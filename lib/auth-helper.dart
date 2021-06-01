@@ -27,6 +27,17 @@ class AuthHelper{
       print(error);
     }
   }
+  emailVerfication()async{
+    User user = auth.currentUser;
+    // if (!checkVerfied()) {
+      await user.sendEmailVerification();
+    // }
+  }
+bool checkVerfied(){
+    User user = auth.currentUser;
+    bool result =user.emailVerified ;
+    return result;
+  }
  bool checkUser(){
     return auth.currentUser!=null;
   }
@@ -35,6 +46,9 @@ class AuthHelper{
     print('${checkUser()}');
     if(checkUser())
     await auth.signOut();
+  }
+  resetPassword(String email)async{
+      await auth.sendPasswordResetEmail(email: email);
   }
 
 }

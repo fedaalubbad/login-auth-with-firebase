@@ -19,6 +19,7 @@ class LoginAuthState extends State<LoginAuth>{
     'email':'',
     'pass':'',
   };
+
   var isLoading=false;
   final _passwordContraller =TextEditingController();
 
@@ -41,8 +42,11 @@ class LoginAuthState extends State<LoginAuth>{
         return ;
       }
       _formKey.currentState.save();
+      AuthHelper.authHelper.login(_authData['email'], _authData['pass']);
       if(_authMode==AuthMode.login){
-        AuthHelper.authHelper.login(_authData['email'], _authData['pass']);
+        if(!AuthHelper.authHelper.checkVerfied())
+         AuthHelper.authHelper.emailVerfication();
+
       }else{
         AuthHelper.authHelper.register(_authData['email'], _authData['pass']);
       }
@@ -119,6 +123,10 @@ class LoginAuthState extends State<LoginAuth>{
                 onPressed: _submit,
               ),
               SizedBox(height: 10,),
+              InkWell(onTap: (){
+                AuthHelper.authHelper.resetPassword(_authData['email']);
+              },
+              child:Text('reset pass')),
               FlatButton(
                 child: Text('${_authMode==AuthMode.login?'SIGN UP':'LOGIN'} instead'),
                 padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 4),
@@ -126,7 +134,6 @@ class LoginAuthState extends State<LoginAuth>{
                 textColor: Theme.of(context).primaryColor,
                 onPressed: _switchMode,
               )
-
             ],
           ),
         ),
