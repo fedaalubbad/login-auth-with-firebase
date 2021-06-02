@@ -1,3 +1,4 @@
+
 import 'dart:io';
 
 class Product {
@@ -13,14 +14,24 @@ class Product {
 
   Product(
       {this.nameAr,
-      this.nameEn,
-      this.descriptionAr,
-      this.descriptionEn,
-      this.id,
-      this.price,
-      this.isFavourite = false,
-      this.imageUrl,
-      this.file});
+        this.nameEn,
+        this.descriptionAr,
+        this.descriptionEn,
+        this.id,
+        this.price,
+        this.isFavourite = false,
+        this.imageUrl,
+        this.file});
+  Product.fromJson(Map map) {
+    this.descriptionAr = map['descriptionAr'];
+    this.descriptionEn = map['descriptionEn'];
+    this.nameAr = map['nameAr'];
+    this.nameEn = map['nameEn'];
+    this.price = map['price'];
+    this.isFavourite = map['isFavourite'];
+    this.imageUrl = map['imageUrl'];
+    this.id = map['id'];
+  }
   toMap() {
     return {
       'nameAr': this.nameAr,
