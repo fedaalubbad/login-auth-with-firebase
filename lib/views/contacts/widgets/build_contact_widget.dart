@@ -1,7 +1,7 @@
-import 'package:auth_login_app/views/contacts/backend/contact_firebase.dart';
 import 'package:auth_login_app/views/contacts/models/contact_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class BuildCourseWidget extends StatelessWidget {
@@ -92,7 +92,7 @@ class BuildCourseWidget extends StatelessWidget {
          right: 30,
         child: Container(
           child: InkWell(
-            onTap:delete(contactModel),
+            onTap:(){delete(contactModel);},
             child: Icon(Icons.delete,color: Colors.red,size: 30,),
           ),
         ),
@@ -107,10 +107,11 @@ class BuildCourseWidget extends StatelessWidget {
         ),
       ),
       Positioned(
-          right: 50,
-          bottom: 50,
+          right: 80,
+          bottom: 30,
         child: Container(
           child: InkWell(
+            // onTap: ()async{ launch(contactModel.phoneNo);},
             child: CircleAvatar(backgroundColor:Colors.green,child: Icon(Icons.call,color: Colors.white,size: 20,),)
           ),
         ),

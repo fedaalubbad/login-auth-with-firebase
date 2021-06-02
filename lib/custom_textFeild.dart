@@ -25,7 +25,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
       obscureText: widget.isPassword,
       validator: (value) => widget.validator(value),
       onSaved: (value) => widget.save(value),
-      controller: widget.isPassword?widget.passwordContraller:widget.contraller,
+      // controller: widget.isPassword?widget.passwordContraller:widget.contraller,
       keyboardType: widget.type,
       decoration: InputDecoration(
           border:

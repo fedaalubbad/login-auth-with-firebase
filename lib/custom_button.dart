@@ -10,7 +10,7 @@ class Custom_Button extends StatelessWidget{
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: function,
+      onTap: (){function();},
       child: Material(
           elevation: 10.0,
           shadowColor: Colors.blue,

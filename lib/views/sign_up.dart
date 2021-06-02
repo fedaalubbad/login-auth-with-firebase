@@ -91,7 +91,7 @@ class SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
-  saveForm(BuildContext context) async {
+  saveForm() async {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
    ContactModel contactModel=ContactModel(
@@ -106,26 +106,26 @@ class SignUpScreenState extends State<SignUpScreen> {
   }
   List<ContactModel>contacts;
 
-  getContacts()async{
-    contacts= await ContactsFirebaseHelper.helper.getAllContacts();
+  // getContacts()async{
+  //   contacts= await ContactsFirebaseHelper.helper.getAllContacts();
     // setState(() {
     //
     // });
-  }
+  // }
   update(ContactModel contactModel)async{
     ContactsFirebaseHelper.helper.editContact(contactModel);
-    await getContacts();
-    setState(() {
-
-    });
+    // await getContacts();
+    // setState(() {
+    //
+    // });
 
   }
   delete(ContactModel contactModel)async{
     ContactsFirebaseHelper.helper.deleteContact(contactModel);
-    await getContacts();
-    setState(() {
-
-    });
+    // await getContacts();
+    // setState(() {
+    //
+    // });
 
   }
   // void buildToast(String msg,BuildContext context) =>
@@ -184,11 +184,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       height: size.height * 0.01,
                     ),
-                    Material(
-                      elevation: 10.0,
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: CustomTextfield(
+                    // Material(
+                    //   elevation: 10.0,
+                    //   color: Colors.white,
+                    //   borderRadius: BorderRadius.circular(30.0),
+                    //   child:
+                      CustomTextfield(
                           isPassword: false,
                           label: name,
                           save: saveName,
@@ -196,7 +197,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                           hint: "Name",
                           icon: Icon(Icons.edit),
                           type: TextInputType.text,),
-                    ),
+                    // ),
                 SizedBox(
                   height: size.height * 0.04,
                 ),
@@ -204,11 +205,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       height: size.height * 0.01,
                     ),
-                    Material(
-                      elevation: 10.0,
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: CustomTextfield(
+                    // Material(
+                    //   elevation: 10.0,
+                    //   color: Colors.white,
+                    //   borderRadius: BorderRadius.circular(30.0),
+                    //   child:
+                      CustomTextfield(
                           isPassword: false,
                           label: email,
                           save: saveEmail,
@@ -217,7 +219,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                           icon: Icon(Icons.email),
                           type: TextInputType.emailAddress,
                       ),
-                    ),
+                    // ),
                 SizedBox(
                   height: size.height * 0.04,
                 ),
@@ -225,11 +227,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       height: size.height * 0.01,
                     ),
-                Material(
-                  elevation: 10.0,
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30.0),
-                  child: CustomTextfield(
+                // Material(
+                //   elevation: 10.0,
+                //   color: Colors.white,
+                //   borderRadius: BorderRadius.circular(30.0),
+                //   child:
+                  CustomTextfield(
                     isPassword: false,
                     label: password,
                     save: savePassword,
@@ -237,7 +240,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                     type: TextInputType.number,
                     hint: "Number",
                      passwordContraller: _passwordContraller,),
-                ),
+                // ),
                 SizedBox(
                   height: size.height * 0.04,
                 ),
@@ -265,7 +268,6 @@ class SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(
                       height: size.height * 0.04,
                     ),
-
                   ],
                 ),
               ),
@@ -321,7 +323,7 @@ showAlert(){
 
 goContactsScreen()async{
    contacts =await ContactsFirebaseHelper.helper.getAllContacts();
-  Navigator.push(context, MaterialPageRoute(builder:(context){
+    Navigator.push(context, MaterialPageRoute(builder:(context){
       return ContactPage(contacts,update,delete);
     }));
 }
